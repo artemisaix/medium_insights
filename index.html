@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="es"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>AI Insights · Backend MeLi</title><style>:root{--primary:#1a1a2e;--secondary:#16213e;--accent:#0f3460;--gold:#e94560;--teal:#00b4d8;--green:#06d6a0;--yellow:#ffd166;--purple:#7b2d8b;--text:#e8e8e8;--text-muted:#a0a0b0;--card:#1e1e3a;--card-border:#2d2d55;--code-bg:#0d0d1a}*{margin:0;padding:0;box-sizing:border-box}body{font-family:"Segoe UI",system-ui,-apple-system,sans-serif;background:var(--primary);color:var(--text);line-height:1.7;font-size:16px}a{color:var(--teal);text-decoration:none}a:hover{text-decoration:underline}.hero{background:linear-gradient(135deg,#0f3460 0%,#1a1a2e 50%,#16213e 100%);padding:60px 20px;text-align:center;position:relative;overflow:hidden;border-bottom:2px solid var(--gold)}.hero::before{content:"";position:absolute;top:0;left:0;right:0;bottom:0;background:url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");opacity:0.5}.hero-content{position:relative;z-index:1;max-width:900px;margin:0 auto}.hero-badge{display:inline-block;background:var(--gold);color:white;padding:4px 14px;border-radius:20px;font-size:12px;font-weight:700;letter-spacing:1px;text-transform:uppercase;margin-bottom:20px}.hero h1{font-size:2.8rem;font-weight:800;margin-bottom:16px;line-height:1.2;color:white}.hero h1 span{color:var(--teal)}.hero-sub{font-size:1.1rem;color:var(--text-muted);margin-bottom:30px;max-width:700px;margin-left:auto;margin-right:auto}.hero-meta{display:flex;gap:30px;justify-content:center;flex-wrap:wrap}.hero-meta-item{display:flex;align-items:center;gap:8px;color:var(--text-muted);font-size:14px}.hero-meta-item span:first-child{font-size:18px}.container{max-width:1100px;margin:0 auto;padding:40px 20px}.toc{background:var(--card);border:1px solid var(--card-border);border-radius:16px;padding:28px 32px;margin-bottom:48px}.toc h3{font-size:1rem;text-transform:uppercase;letter-spacing:1px;color:var(--text-muted);margin-bottom:16px;font-weight:600}.toc-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:10px}.toc-item{display:flex;align-items:center;gap:10px;padding:10px 14px;background:var(--secondary);border-radius:10px;border:1px solid var(--card-border);cursor:pointer;transition:all .2s}.toc-item:hover{border-color:var(--teal);transform:translateY(-2px)}.toc-item .toc-icon{font-size:20px}.toc-item .toc-label{font-size:13px;font-weight:500;color:var(--text)}.section{margin-bottom:64px}.section-header{display:flex;align-items:center;gap:16px;margin-bottom:32px;padding-bottom:16px;border-bottom:1px solid var(--card-border)}.section-icon{font-size:2.2rem}.section-title{font-size:1.7rem;font-weight:700;color:white}.section-subtitle{font-size:.9rem;color:var(--text-muted);margin-top:4px}.card{background:var(--card);border:1px solid var(--card-border);border-radius:14px;padding:28px;margin-bottom:20px;transition:border-color .2s,transform .2s}.card:hover{border-color:var(--teal);transform:translateY(-2px)}.card-header{display:flex;align-items:flex-start;gap:14px;margin-bottom:16px}.card-icon{font-size:1.5rem;flex-shrink:0;margin-top:2px}.card-title{font-size:1.1rem;font-weight:700;color:white;margin-bottom:4px}.card-desc{font-size:.85rem;color:var(--teal)}.tip-list{list-style:none;margin:0;padding:0}.tip-list li{padding:9px 0;padding-left:20px;position:relative;color:var(--text);font-size:.95rem;border-bottom:1px solid rgba(255,255,255,.04)}.tip-list li:last-child{border-bottom:none}.tip-list li::before{content:"▸";position:absolute;left:0;color:var(--teal);font-size:.8rem;top:11px}.tip-list li strong{color:white}.tag{display:inline-block;font-size:11px;padding:2px 10px;border-radius:20px;font-weight:600;margin-right:6px;text-transform:uppercase;letter-spacing:.5px}.tag-critical{background:rgba(233,69,96,.15);color:var(--gold);border:1px solid rgba(233,69,96,.3)}.tag-tip{background:rgba(0,180,216,.1);color:var(--teal);border:1px solid rgba(0,180,216,.25)}.tag-new{background:rgba(6,214,160,.1);color:var(--green);border:1px solid rgba(6,214,160,.25)}.code-block{background:var(--code-bg);border:1px solid var(--card-border);border-radius:10px;padding:16px 20px;font-family:"Consolas","Courier New",monospace;font-size:.82rem;color:#a8ff78;overflow-x:auto;margin:12px 0;white-space:pre}.code-block .comment{color:#5c6370}.table-wrap{overflow-x:auto;margin:16px 0}table{width:100%;border-collapse:collapse;font-size:.9rem}thead tr{background:var(--accent)}th{padding:12px 16px;text-align:left;color:var(--teal);font-weight:600;font-size:.85rem;text-transform:uppercase;letter-spacing:.5px}td{padding:11px 16px;border-bottom:1px solid var(--card-border);color:var(--text);vertical-align:top}tr:hover td{background:rgba(0,180,216,.05)}.highlight-box{background:linear-gradient(135deg,rgba(15,52,96,.5),rgba(123,45,139,.3));border:1px solid rgba(0,180,216,.3);border-radius:12px;padding:20px 24px;margin:16px 0}.highlight-box .hb-title{font-size:.85rem;text-transform:uppercase;letter-spacing:1px;color:var(--teal);font-weight:700;margin-bottom:8px}.highlight-box p{color:var(--text-muted);font-size:.95rem}.warning-box{background:rgba(233,69,96,.08);border:1px solid rgba(233,69,96,.25);border-radius:12px;padding:18px 22px;margin:14px 0}.warning-box .wb-title{color:var(--gold);font-weight:700;font-size:.9rem;margin-bottom:6px}.warning-box p,.warning-box li{color:#c0a0a0;font-size:.92rem}.warning-box ul{padding-left:18px}.summary-section{background:linear-gradient(135deg,var(--accent),var(--secondary));border:2px solid var(--gold);border-radius:20px;padding:40px;margin-top:60px}.summary-section h2{font-size:1.6rem;color:var(--gold);margin-bottom:24px;text-align:center}.summary-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:16px}.summary-item{background:rgba(0,0,0,.3);border-radius:12px;padding:18px;text-align:center;border:1px solid rgba(255,255,255,.1)}.summary-item .sum-num{font-size:2rem;font-weight:800;color:var(--gold);display:block}.summary-item .sum-text{font-size:.85rem;color:var(--text-muted);margin-top:6px}.footer{background:var(--secondary);border-top:1px solid var(--card-border);text-align:center;padding:28px;color:var(--text-muted);font-size:.85rem;margin-top:60px}.footer strong{color:var(--teal)}@media(max-width:700px){.hero h1{font-size:1.8rem}.toc-grid{grid-template-columns:1fr 1fr}.summary-grid{grid-template-columns:1fr 1fr}.hero-meta{gap:14px}}</style><style>
+:root{--primary:#1a1a2e;--secondary:#16213e;--accent:#0f3460;--gold:#e94560;--teal:#00b4d8;--green:#06d6a0;--text:#e8e8e8;--muted:#a0a0b0;--card:#1e1e3a;--border:#2d2d55;--code:#0d0d1a}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Segoe UI',system-ui,sans-serif;background:var(--primary);color:var(--text);line-height:1.7;font-size:16px}
+.hero{background:linear-gradient(135deg,#0f3460,#1a1a2e 60%,#16213e);padding:56px 24px;text-align:center;border-bottom:2px solid var(--gold)}
+.badge{display:inline-block;background:var(--gold);color:#fff;padding:3px 14px;border-radius:20px;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:1px;margin-bottom:18px}
+h1{font-size:2.6rem;font-weight:800;color:#fff;margin-bottom:14px}
+h1 span{color:var(--teal)}
+.sub{color:var(--muted);font-size:1.05rem;max-width:680px;margin:0 auto 24px}
+.meta{display:flex;gap:24px;justify-content:center;flex-wrap:wrap;color:var(--muted);font-size:13px}
+.wrap{max-width:1080px;margin:0 auto;padding:36px 20px}
+.toc{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:24px 28px;margin-bottom:44px}
+.toc-h{font-size:.8rem;text-transform:uppercase;letter-spacing:1px;color:var(--muted);margin-bottom:14px;font-weight:700}
+.toc-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:10px}
+.toc-it{background:var(--secondary);border:1px solid var(--border);border-radius:10px;padding:10px 14px;font-size:13px;font-weight:500;display:flex;align-items:center;gap:9px;cursor:pointer;transition:border-color .2s}
+.toc-it:hover{border-color:var(--teal)}
+.sec{margin-bottom:60px}
+.sec-hd{display:flex;align-items:center;gap:14px;margin-bottom:28px;padding-bottom:14px;border-bottom:1px solid var(--border)}
+.sec-ico{font-size:2rem}
+.sec-title{font-size:1.6rem;font-weight:700;color:#fff}
+.sec-src{font-size:.82rem;color:var(--muted);margin-top:3px}
+.card{background:var(--card);border:1px solid var(--border);border-radius:13px;padding:26px;margin-bottom:18px;transition:border-color .2s,transform .2s}
+.card:hover{border-color:var(--teal);transform:translateY(-2px)}
+.card-hd{display:flex;gap:13px;align-items:flex-start;margin-bottom:14px}
+.card-ico{font-size:1.4rem;flex-shrink:0;margin-top:2px}
+.card-t{font-size:1.05rem;font-weight:700;color:#fff;margin-bottom:3px}
+.card-d{font-size:.82rem;color:var(--teal)}
+ul.tips{list-style:none;padding:0}
+ul.tips li{padding:8px 0 8px 20px;position:relative;border-bottom:1px solid rgba(255,255,255,.04);font-size:.94rem;color:var(--text)}
+ul.tips li:last-child{border:none}
+ul.tips li::before{content:"▸";position:absolute;left:0;color:var(--teal);font-size:.75rem;top:10px}
+ul.tips li strong{color:#fff}
+ul.tips li code{background:var(--code);color:#a8ff78;padding:1px 7px;border-radius:5px;font-size:.82rem}
+.tag{display:inline-block;font-size:10px;padding:2px 10px;border-radius:20px;font-weight:700;margin-right:5px;text-transform:uppercase;letter-spacing:.5px}
+.t-red{background:rgba(233,69,96,.12);color:#e94560;border:1px solid rgba(233,69,96,.3)}
+.t-teal{background:rgba(0,180,216,.1);color:var(--teal);border:1px solid rgba(0,180,216,.25)}
+.t-green{background:rgba(6,214,160,.1);color:var(--green);border:1px solid rgba(6,214,160,.25)}
+pre{background:var(--code);border:1px solid var(--border);border-radius:9px;padding:14px 18px;font-size:.78rem;color:#a8ff78;overflow-x:auto;margin:12px 0;font-family:Consolas,monospace;white-space:pre}
+pre .c{color:#4a5060}
+.hi{background:linear-gradient(135deg,rgba(15,52,96,.5),rgba(123,45,139,.2));border:1px solid rgba(0,180,216,.25);border-radius:11px;padding:18px 22px;margin:14px 0}
+.hi-t{font-size:.78rem;text-transform:uppercase;letter-spacing:1px;color:var(--teal);font-weight:700;margin-bottom:7px}
+.warn{background:rgba(233,69,96,.07);border:1px solid rgba(233,69,96,.22);border-radius:10px;padding:16px 20px;margin:13px 0}
+.warn-t{color:var(--gold);font-weight:700;font-size:.88rem;margin-bottom:5px}
+.tbl{overflow-x:auto;margin:14px 0}
+table{width:100%;border-collapse:collapse;font-size:.88rem}
+thead tr{background:var(--accent)}
+th{padding:10px 14px;text-align:left;color:var(--teal);font-weight:600;font-size:.78rem;text-transform:uppercase;letter-spacing:.5px}
+td{padding:10px 14px;border-bottom:1px solid var(--border);color:var(--text);vertical-align:top}
+tr:hover td{background:rgba(0,180,216,.04)}
+.sum{background:linear-gradient(135deg,var(--accent),var(--secondary));border:2px solid var(--gold);border-radius:18px;padding:38px;margin-top:56px}
+.sum h2{font-size:1.5rem;color:var(--gold);margin-bottom:22px;text-align:center}
+.sum-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:14px}
+.sum-it{background:rgba(0,0,0,.3);border-radius:11px;padding:16px;text-align:center;border:1px solid rgba(255,255,255,.08)}
+.sum-n{font-size:2rem;font-weight:800;color:var(--gold);display:block;margin-bottom:6px}
+.sum-txt{font-size:.82rem;color:var(--muted)}
+footer{background:var(--secondary);border-top:1px solid var(--border);text-align:center;padding:26px;color:var(--muted);font-size:.82rem;margin-top:56px}
+footer strong{color:var(--teal)}
+@media(max-width:660px){h1{font-size:1.7rem}.sum-grid{grid-template-columns:1fr 1fr}}
+</style></head><body style="margin: 0px; padding: 0px; background: rgb(26, 26, 46); color: rgb(232, 232, 232); font-family: &quot;Segoe UI&quot;, sans-serif;"><div class="hero">
+<div class="badge">Mercado Libre · Equipo Backend</div>
+<h1>AI para Desarrolladores <span>Backend</span></h1>
+<p class="sub">Consejos prácticos de Medium para equipos Go y Java que usan Claude Code, MCP y AI en su flujo de trabajo.</p>
+<div class="meta">
+<span>📅 Marzo 2026</span>
+<span>👥 9 Desarrolladores Backend</span>
+<span>🔗 Fuente: Medium</span>
+<span>🚀 Go · Java · MCP · Claude Code</span>
+</div>
+</div><div class="wrap">
+<div class="toc">
+<div class="toc-h">Indice de Contenidos</div>
+<div class="toc-grid">
+<div class="toc-it">🤖 Claude Code en Equipo</div>
+<div class="toc-it">⚡ Agent Teams (Nuevo)</div>
+<div class="toc-it">🔌 MCP vs REST</div>
+<div class="toc-it">🔒 Seguridad MCP</div>
+<div class="toc-it">🐹 Golang + AI</div>
+<div class="toc-it">☕ Java + AI</div>
+<div class="toc-it">📊 Observabilidad LLM</div>
+<div class="toc-it">✅ Accion esta semana</div>
+</div>
+</div><div class="sec">
+<div class="sec-hd"><span class="sec-ico">🤖</span><div>
+<div class="sec-title">Claude Code — Como usarlo bien en equipo</div>
+<div class="sec-src">Fuente: "Stop Treating CLAUDE.md Like a Prompt File" — Medium, Mar 2026</div>
+</div></div>
+
+<div class="card">
+<div class="card-hd"><span class="card-ico">📄</span><div>
+<div class="card-t">1. El CLAUDE.md debe ser corto — maximo 50 lineas</div>
+<div class="card-d"><span class="tag t-red">CRITICO</span> El error mas comun del equipo</div>
+</div></div>
+<ul class="tips">
+<li>Si el archivo tiene mas de 50-80 lineas, <strong>Claude empieza a ignorar partes</strong>. El volumen no ayuda, confunde.</li>
+<li>El CLAUDE.md raiz debe tener solo 3 cosas: <strong>para que sirve el servicio</strong> (2 parrafos), <strong>mapa de directorios importantes</strong>, y <strong>comandos esenciales</strong> del proyecto.</li>
+<li>Ejemplo real: Purpose + Structure + Rules + Common Commands. <strong>20 lineas en total</strong>. Hace todo lo necesario.</li>
+<li><strong>Resistir el impulso</strong> de documentar cada caso borde ahi. Claude puede pedir mas contexto cuando lo necesite.</li>
+</ul>
+</div>
+
+<div class="card">
+<div class="card-hd"><span class="card-ico">🛠️</span><div>
+<div class="card-t">2. Crear .claude/skills/ — workflows que se reusan, no se repiten</div>
+<div class="card-d"><span class="tag t-teal">PRODUCTIVIDAD</span> Estandariza el trabajo del equipo</div>
+</div></div>
+<ul class="tips">
+<li>Crear la carpeta <strong>.claude/skills/</strong> con archivos Markdown para cada tarea repetitiva del equipo.</li>
+<li>Skills recomendados: <strong>code-review.md</strong> (checklist de PRs), <strong>refactor.md</strong> (pasos estandar), <strong>debug-prod.md</strong> (investigacion de incidentes), <strong>api-design.md</strong> (convenciones REST).</li>
+<li>Uso: <em>"Revisa este PR usando el skill code-review"</em>. Claude sigue el mismo checklist <strong>siempre</strong>, sin variacion entre sesiones ni personas.</li>
+<li>Beneficio clave: <strong>el conocimiento del equipo queda en el repo</strong>, no en la cabeza de cada persona.</li>
+</ul>
+<pre><span class="c"># .claude/skills/code-review.md</span>
+Cuando revises codigo, verificar siempre:
+1. Tests — tiene tests? cubren edge cases?
+2. Error handling — que pasa si esto falla?
+3. Performance — hay N+1 queries? loops innecesarios?
+4. Seguridad — toca datos de usuario? auth? pagos?
+5. Docs — las funciones nuevas tienen docstrings?</pre>
+</div>
+
+<div class="card">
+<div class="card-hd"><span class="card-ico">🪝</span><div>
+<div class="card-t">3. Configurar .claude/hooks/ — automatizacion que no depende de memoria</div>
+<div class="card-d"><span class="tag t-teal">AUTOMATIZACION</span> Claude olvidara. Los hooks no.</div>
+</div></div>
+<ul class="tips">
+<li>Los hooks son scripts que corren <strong>automaticamente en puntos clave</strong>, sin que nadie tenga que recordar pedirle a Claude.</li>
+<li><strong>Hook post-edicion:</strong> correr gofmt y go vet automaticamente sobre archivos editados en Go.</li>
+<li><strong>Hook de proteccion:</strong> si Claude toca un archivo de auth, billing o migrations → bloquear y pedir revision manual explicita.</li>
+<li><strong>Hook pre-commit:</strong> correr los tests relacionados con los archivos modificados.</li>
+<li>Resultado: dejan de babysitear a Claude. El proceso se vuelve <strong>deterministico</strong>.</li>
+</ul>
+</div>
+
+<div class="card">
+<div class="card-hd"><span class="card-ico">📁</span><div>
+<div class="card-t">4. CLAUDE.md local en modulos de alto riesgo</div>
+<div class="card-d"><span class="tag t-red">SEGURIDAD</span> Para modulos sensibles del sistema</div>
+</div></div>
+<ul class="tips">
+<li>Poner un <strong>CLAUDE.md dentro de cada modulo riesgoso</strong> (auth, pagos, integraciones criticas de MeLi). Claude lo lee justo cuando trabaja ahi.</li>
+<li>Que poner adentro: que <strong>NO se puede tocar sin aprobacion</strong>, compliance que aplica, gotchas conocidos del modulo, que tests son obligatorios antes de hacer un PR.</li>
+<li>Mucho mejor que tratar de recordar todas las reglas de todos los modulos en el CLAUDE.md raiz.</li>
+</ul>
+</div>
+</div><div class="sec">
+<div class="sec-hd"><span class="sec-ico">⚡</span><div>
+<div class="sec-title">Agent Teams en Claude Code — Multi-agente ya disponible</div>
+<div class="sec-src">Fuente: "Anthropic Hid a Multi-Agent System Inside Claude Code" — Medium, Mar 2026</div>
+</div></div>
+
+<div class="hi">
+<div class="hi-t">Que es esto?</div>
+<p>Desde febrero 2026, Claude Code tiene un sistema de <strong>agentes en equipo</strong>: un agente coordinador planifica y delega, agentes especialistas trabajan <strong>en paralelo y simultaneamente</strong> en backend, tests, base de datos, etc. Una tarea de 90 minutos puede tomar 25-35 minutos.</p>
+</div>
+
+<div class="card">
+<div class="card-hd"><span class="card-ico">🚀</span><div>
+<div class="card-t">Como activarlo y usarlo correctamente</div>
+<div class="card-d"><span class="tag t-green">NUEVO · Feb 2026</span></div>
+</div></div>
+<ul class="tips">
+<li><strong>Activacion:</strong> una sola linea en el settings del proyecto. Ya esta construido en el binario.</li>
+<li><strong>Regla critica — Shift+Tab despues de aprobar el plan:</strong> bloquea al coordinador en modo "solo coordinar". Sin esto, el coordinador empieza a escribir codigo el mismo y rompe la arquitectura del equipo.</li>
+<li><strong>Sweet spot probado por Anthropic:</strong> 4 agentes especialistas, 5-6 tareas cada uno = 20 unidades de trabajo. Equipos de mas de 5 agentes generan overhead que cancela el beneficio.</li>
+<li>Los agentes se <strong>comunican entre si directamente</strong>. El agente backend puede avisar al de tests que termino su parte sin pasar por el coordinador.</li>
+<li>No intentar reanudar sesiones interrumpidas. Si algo se corta, <strong>crear un equipo nuevo desde cero</strong>.</li>
+</ul>
+<pre><span class="c">// .claude/settings.json — activacion en una linea</span>
+{
+  "env": {
+    "CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS": "1"
+  }
+}</pre>
+</div>
+
+<div class="card">
+<div class="card-hd"><span class="card-ico">📋</span><div>
+<div class="card-t">Cuando usar cada modo de Claude Code</div>
+</div></div>
+<div class="tbl"><table>
+<thead><tr><th>Escenario</th><th>Herramienta recomendada</th></tr></thead>
+<tbody>
+<tr><td>Tarea simple y focalizada</td><td>Sesion principal (normal)</td></tr>
+<tr><td>Necesita aislamiento de herramientas</td><td>Subagente</td></tr>
+<tr><td>Feature con partes independientes (handler + tests + BD)</td><td><strong>Agent Teams</strong></td></tr>
+<tr><td>Codebase productivo con deadline</td><td>Subagentes (mas estable)</td></tr>
+<tr><td>Proyecto nuevo o experimental</td><td>Agent Teams (experimental)</td></tr>
+</tbody>
+</table></div>
+<div class="warn">
+<div class="warn-t">Costo real a considerar</div>
+<p>4 agentes = 4x el costo en tokens. Ganan tiempo, no dinero de API. Usar para tareas donde el tiempo importa mas que el costo de tokens.</p>
+</div>
+</div>
+</div><div class="sec">
+<div class="sec-hd"><span class="sec-ico">🔌</span><div>
+<div class="sec-title">MCP (Model Context Protocol) — El nuevo estandar de integracion AI</div>
+<div class="sec-src">Fuente: "From REST to MCP: Why Developers Should Embrace the Model Context Protocol" — Medium, Ene 2026</div>
+</div></div>
+
+<div class="hi">
+<div class="hi-t">Por que importa para su equipo?</div>
+<p>El modelo antiguo de integrar AI con servicios internos escala mal: <strong>M agentes x N servicios = M×N integraciones custom</strong> que mantener y que se rompen. MCP resuelve esto: un servicio se expone una vez y cualquier agente que soporte el protocolo lo puede usar sin codigo adicional. Ya lo adoptaron ChatGPT, VS Code, GitHub Copilot, Cursor y mas de 10,000 servidores publicos en 2025.</p>
+</div>
+
+<div class="card">
+<div class="card-hd"><span class="card-ico">⚖️</span><div>
+<div class="card-t">REST vs MCP — Diferencia concreta para el dia a dia</div>
+</div></div>
+<div class="tbl"><table>
+<thead><tr><th>REST tradicional</th><th>Con MCP</th></tr></thead>
+<tbody>
+<tr><td>Cada integracion requiere codigo custom</td><td><strong>Se configura una vez, cualquier agente la usa</strong></td></tr>
+<tr><td>El agente necesita aprender la forma de cada API</td><td><strong>El agente pregunta que podes hacer y el server responde</strong></td></tr>
+<tr><td>Coordinar multiples llamadas = responsabilidad del dev</td><td><strong>El agente orquesta los pasos solo</strong></td></tr>
+<tr><td>Credenciales pueden quedar expuestas al agente</td><td><strong>Las credenciales se inyectan server-side, el agente nunca las ve</strong></td></tr>
+<tr><td>Debug: revisar N sistemas distintos</td><td><strong>Un unico punto central de auditoria</strong></td></tr>
+</tbody>
+</table></div>
+</div>
+
+<div class="card">
+<div class="card-hd"><span class="card-ico">🔧</span><div>
+<div class="card-t">Consejo practico: usar Unla (MCP Gateway) para no reescribir nada</div>
+<div class="card-d"><span class="tag t-teal">ACCION INMEDIATA</span> Sin modificar servicios existentes</div>
+</div></div>
+<ul class="tips">
+<li>No hay que migrar las APIs REST existentes. Usar <strong>Unla</strong> (open source, escrito en Go) que toma endpoints REST y los expone como MCP via un archivo YAML de configuracion.</li>
+<li><strong>Cero cambios en el servicio original.</strong> Unla vive encima de los sistemas existentes como capa de traduccion. Se levanta con un comando Docker.</li>
+<li>Viene con interfaz web para configurar y probar integraciones en vivo, sin codigo.</li>
+<li>Ejercicio concreto: elegir un servicio Go interno → exponerlo con Unla → probarlo desde Claude Code. <strong>Lleva menos de una tarde.</strong></li>
+<li>Caso de uso que esto habilita sin codigo adicional: un agente busca un ID en BD → consulta otro servicio interno con ese ID → publica el resultado en Slack. Todo orquestado por el agente a traves de MCP.</li>
+</ul>
+</div>
+</div><div class="sec">
+<div class="sec-hd"><span class="sec-ico">🔒</span><div>
+<div class="sec-title">Seguridad de MCP en Produccion</div>
+<div class="sec-src">Fuente: "Securing the Model Context Protocol (MCP): Risks, Controls, and Governance" — Medium, Dic 2025</div>
+</div></div>
+<div class="card">
+<div class="card-hd"><span class="card-ico">🛡️</span><div>
+<div class="card-t">Reglas antes de exponer servicios internos via MCP en produccion</div>
+<div class="card-d"><span class="tag t-red">CRITICO para MeLi</span></div>
+</div></div>
+<ul class="tips">
+<li><strong>Nunca pasar credenciales directamente al agente.</strong> Usar un gateway (como Peta) que inyecta las credenciales server-side en cada llamada. El agente nunca ve las API keys reales, aunque el log de conversacion se filtre.</li>
+<li><strong>Definir politicas explicitas a nivel de gateway</strong>, no en el prompt: que puede leer el agente, que puede escribir, que requiere aprobacion humana antes de ejecutar.</li>
+<li><strong>Principio de minimo privilegio:</strong> si el agente solo necesita leer ordenes, no darle permisos de escritura ni eliminacion.</li>
+<li><strong>Toda accion queda en el log del gateway.</strong> Esto es auditabilidad real, no confiamos en el prompt. Para MercadoLibre, este trail de auditoria es indispensable.</li>
+<li><strong>Para sistemas criticos</strong> (pagos, datos de usuarios, infraestructura): configurar aprobacion humana explicita antes de que el agente ejecute acciones de escritura.</li>
+</ul>
+</div>
+</div>
+
+<div class="sec">
+<div class="sec-hd"><span class="sec-ico">🐹</span><div>
+<div class="sec-title">Golang + AI — Integrando LLMs en microservicios Go</div>
+<div class="sec-src">Fuente: "Go + AI: Build LLM-Powered Microservices" y "The Observability Stack Every LLM-Powered Go Service Needs" — Medium 2025/2026</div>
+</div></div>
+
+<div class="card">
+<div class="card-hd"><span class="card-ico">⚙️</span><div>
+<div class="card-t">Como conectar un servicio Go a un LLM</div>
+<div class="card-d"><span class="tag t-teal">TECNICO</span> Implementacion directa</div>
+</div></div>
+<ul class="tips">
+<li>Usar el SDK <code>github.com/sashabaranov/go-openai</code>. Compatible con cualquier API que siga el estandar OpenAI, incluyendo la API de Anthropic (Claude). Lo dificil no es conectarse, es hacerlo bien en produccion.</li>
+<li>Estructura recomendada: <strong>Endpoint REST</strong> → <strong>AI Middleware</strong> (llama al LLM) → <strong>Response Handler</strong> (estructura y devuelve).</li>
+<li>Casos de uso concretos para MeLi: clasificar tickets de soporte, resumir logs de errores, sugerir resoluciones a partir de stack traces, asistente de documentacion interna.</li>
+<li>Framework recomendado: <strong>GoFr</strong> (open source) tiene OpenTelemetry, circuit breaker y health checks pre-integrados para servicios externos incluyendo LLMs.</li>
+</ul>
+<pre><span class="c">// Integracion basica Go + LLM</span>
+client := openai.NewClient("API_KEY")
+resp, err := client.CreateChatCompletion(ctx,
+  openai.ChatCompletionRequest{
+    Model: openai.GPT4o,
+    Messages: []openai.ChatCompletionMessage{
+      {Role: "user", Content: userInput},
+    },
+  })
+<span class="c">// El mismo SDK funciona para Claude via compatibilidad OpenAI</span></pre>
+</div>
+
+<div class="card">
+<div class="card-hd"><span class="card-ico">📊</span><div>
+<div class="card-t">Los servicios Go con LLM fallan diferente — necesitan observabilidad diferente</div>
+<div class="card-d"><span class="tag t-red">CRITICO en produccion</span></div>
+</div></div>
+<ul class="tips">
+<li><strong>El problema:</strong> el servicio puede devolver HTTP 200 con JSON valido, pero el <em>contenido</em> es basura. No hay stack trace, no hay error, no hay alerta con observabilidad estandar.</li>
+<li><strong>Tracing con spans para el LLM:</strong> necesitan saber cuanto tiempo tomo su codigo vs cuanto esperaron al proveedor. Son problemas distintos con soluciones distintas. Atributos necesarios: modelo, tokens del prompt, tokens de respuesta, latencia del proveedor.</li>
+<li><strong>Logs estructurados que incluyan:</strong> user_id, modelo, longitud del prompt, tokens usados, latencia. Sin esto, cuando un usuario reporte "la AI me dio algo incorrecto" no van a poder reproducir que prompt exacto se envio.</li>
+<li><strong>Metrica de costo = tokens por endpoint en el tiempo.</strong> Un cambio de prompt que hace las respuestas 30% mas largas no aparece en ningun lado excepto en esta metrica, antes de que llegue la factura.</li>
+<li><strong>Latencia del proveedor como histograma (p50/p95/p99), nunca como promedio.</strong> Un proveedor con p50=600ms y p99=14 segundos esta arruinando la experiencia del 1% de usuarios — el promedio jamas lo va a mostrar.</li>
+<li><strong>Errores separados por tipo:</strong> rate limit, timeout, respuesta malformada. Mezclarlos no dice que hacer. Separarlos si.</li>
+</ul>
+</div>
+
+<div class="card">
+<div class="card-hd"><span class="card-ico">🔄</span><div>
+<div class="card-t">Circuit Breaker sobre el proveedor LLM — No es opcional</div>
+<div class="card-d"><span class="tag t-red">CRITICO</span> Sin esto, una falla del proveedor tumba todo el servicio</div>
+</div></div>
+<ul class="tips">
+<li><strong>Sin circuit breaker:</strong> cuando el proveedor LLM falla, cada request espera 30 segundos antes de fallar → los thread pools se llenan → otros endpoints sin nada que ver con AI empiezan a fallar tambien.</li>
+<li>Configurar para abrir despues de 4 fallas consecutivas. Cuando esta abierto, el request falla inmediatamente en lugar de esperar 30 segundos.</li>
+<li>El circuit breaker se cierra automaticamente cuando el proveedor se recupera. Con GoFr, es configuracion — no codigo.</li>
+<li>Alertar cuando el circuit breaker se abre: significa que el proveedor tiene problemas <strong>antes de que los usuarios lo reporten</strong>.</li>
+</ul>
+<pre><span class="c">// GoFr: circuit breaker en la configuracion del servicio externo</span>
+app.AddHTTPService("llm-provider", "https://api.openai.com",
+  &amp;service.CircuitBreakerConfig{
+    Threshold: 4,              // abre despues de 4 fallas
+    Interval:  1 * time.Second,
+  },
+)
+<span class="c">// GoFr publica app_http_circuit_breaker_state en Prometheus</span>
+<span class="c">// 0 = cerrado (ok), 1 = abierto (falla). Alertar sobre esto.</span></pre>
+</div>
+</div><div class="sec">
+<div class="sec-hd"><span class="sec-ico">☕</span><div>
+<div class="sec-title">Java + AI — Spring Boot con LangChain4J</div>
+<div class="sec-src">Fuente: "Spring Boot + AI Agents: Building Intelligent APIs with LangChain4J and OpenAI" — Medium, Oct 2025</div>
+</div></div>
+
+<div class="card">
+<div class="card-hd"><span class="card-ico">🧠</span><div>
+<div class="card-t">LangChain4J — el LangChain de Java, ya maduro para produccion</div>
+<div class="card-d"><span class="tag t-teal">JAVA</span> Para servicios Spring Boot del equipo</div>
+</div></div>
+<ul class="tips">
+<li>Agregar <strong>LangChain4J</strong> al pom.xml y pueden tener un endpoint REST con AI funcionando en menos de una hora.</li>
+<li>La integracion usa una interfaz Java anotada con <code>@AiService</code> — se inyecta como cualquier bean de Spring. <strong>No cambia la arquitectura existente.</strong></li>
+<li><strong>Memoria de conversacion:</strong> con MessageWindowChatMemory el agente recuerda el contexto de la sesion (configurable: cuantos mensajes previos retener).</li>
+<li><strong>RAG:</strong> conectar el LLM a documentacion interna o wikis de MeLi para que responda preguntas sobre sus propios sistemas, no invente respuestas genericas.</li>
+<li><strong>Caso de uso concreto para su equipo:</strong> endpoint interno donde los devs preguntan sobre codigo, documentacion o runbooks de sus servicios. El LLM responde con contexto real del proyecto.</li>
+<li><strong>Seguridad:</strong> las API keys nunca en application.yml en el repo. Usar Spring Cloud Config, el vault de la plataforma, o variables de entorno.</li>
+</ul>
+<pre><span class="c">// Asi de simple se ve un AI Service en Spring Boot con LangChain4J</span>
+@AiService
+public interface BackendAssistant {
+    @UserMessage("Sos un experto en este codebase. " +
+                 "Responde de forma concisa y precisa.")
+    String ask(String question);
+}
+
+<span class="c">// Se inyecta como cualquier bean normal de Spring</span>
+@RestController
+public class AssistantController {
+    @Autowired private BackendAssistant assistant;
+
+    @PostMapping("/ask")
+    public String ask(@RequestBody String question) {
+        return assistant.ask(question);
+    }
+}</pre>
+</div>
+</div>
+
+<div class="sum">
+<h2>Las 5 cosas que hacer esta semana</h2>
+<div class="sum-grid">
+<div class="sum-it"><span class="sum-n">1</span><div class="sum-txt">Revisar el CLAUDE.md del repo. Si tiene mas de 50 lineas, recortarlo. Agregar CLAUDE.md locales en modulos riesgosos (auth, pagos).</div></div>
+<div class="sum-it"><span class="sum-n">2</span><div class="sum-txt">Crear .claude/skills/code-review.md con el checklist de PR del equipo. Estandariza algo que todos hacen distinto hoy.</div></div>
+<div class="sum-it"><span class="sum-n">3</span><div class="sum-txt">Habilitar Agent Teams en Claude Code y probarlo en una tarea con partes independientes: handler + BD + tests en paralelo.</div></div>
+<div class="sum-it"><span class="sum-n">4</span><div class="sum-txt">Elegir un servicio Go interno y exponerlo como MCP server con Unla. El ejercicio completo lleva menos de una tarde.</div></div>
+<div class="sum-it"><span class="sum-n">5</span><div class="sum-txt">Para cualquier servicio Go que llame a un LLM: agregar histograma de latencia del proveedor y circuit breaker ANTES de deployar.</div></div>
+</div>
+</div>
+
+</div><footer>Preparado para <strong>Equipo Backend MercadoLibre</strong> · Fuente: Medium (cuenta premium) · Marzo 2026 · Go · Java · Claude Code · MCP · LangChain4J · GoFr</footer><div id="snbc"><div jsname="sM5MNb" aria-live="polite" class="LH3wG"></div></div></body></html>
